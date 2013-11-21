@@ -4,14 +4,13 @@
     "$http", "$document", function($http, $document) {
       return {
         getLyrics: function(artist, track) {
-          var q, url;
+          var q;
           q = artist.replace(" ", "+") + "+" + track.replace(" ", "+");
-          url = "http://search.azlyrics.com/search.php?q=" + q + "&callback=JSON_CALLBACK";
           return $http({
-            method: 'GET',
-            url: url,
-            headers: {
-              "Content-Type": "text/html; charset=UTF-8"
+            method: 'POST',
+            url: "http://localhost:3000/lyricLookup",
+            data: {
+              q: q
             }
           });
         }

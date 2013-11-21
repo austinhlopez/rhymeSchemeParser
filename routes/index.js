@@ -1,8 +1,14 @@
 
 /*
- * GET home page.
- */
+  GET home page.
+*/
 
-exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
-};
+(function() {
+
+  exports.index = function(req, res) {
+    return res.render('index', {
+      title: 'RapScheme'
+    });
+  };
+
+}).call(this);

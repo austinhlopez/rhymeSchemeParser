@@ -12,17 +12,14 @@ angular.module('hackathonApp')
         # Combine artist and track into a single query string.
         q = artist.replace(" ", "+") + "+" + track.replace(" ", "+")
 
-        url = "http://search.azlyrics.com/search.php?q=#{q}&callback=JSON_CALLBACK"
 
+        # TODO: Write a url service that populates the url with the dev setup or the production
+        # setup, depending on whether the app is run in localhost or on the server.
         $http
-          method: 'GET'
-          url: url
-          headers:
-            "Content-Type": "text/html; charset=UTF-8"
-            
-        #.success (data) ->
-        #  console.log "what the fuck."
-        #console.log("whatever.")
+          method: 'POST'
+          url: "http://localhost:3000/lyricLookup"
+          data:
+            q: q
       
     ]
     
