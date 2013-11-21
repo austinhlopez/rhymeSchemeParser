@@ -1,0 +1,21 @@
+<div ng-controller="homeCtrl">
+  <div class="header">
+	<ul class="nav nav-pills pull-right">
+	  <li class="active"><a href="#">Home</a></li>
+	  <li><a href="#">About</a></li>
+	  <li><a href="#">Contact</a></li>
+	</ul>
+	<h3 class="text-muted">hackathon</h3>
+  </div>
+  
+	<h1> Look up a song, bro. </h1>
+    <div class="row">
+    <input name="uArtist" style="display: block;" id="artistInput" type="text" placeholder="Artist name here..." ng-model="artistName" />
+    <input name="uTrack" style="display: block; " id="trackInput" type="text" placeholder="Track name here..." ng-model="trackName" />
+    <button class="btn btn-success btn-large" style="display: block; text-align:center" class="btn btn-success" ng-click="searchForLyrics()">Go</button>
+    </div>
+
+  <div class="footer">
+    <p>Hackathonin'</p>
+  </div>
+</div>
