@@ -66,8 +66,7 @@
             rawLyricsString = body.match(lyricsRegex)[0];
             rawLyricsStripFront = rawLyricsString.replace("<!-- start of lyrics -->\n", "");
             rawLyricsStripBack = rawLyricsStripFront.replace("\n<!-- end of lyrics -->", "");
-            rawLyricsNoHtml = rawLyricsStripBack.replace(/<[\s\S]*?>/, "");
-            return console.log(rawLyricsNoHtml);
+            return rawLyricsNoHtml = rawLyricsStripBack.replace(/(<([^>]+)>)/ig, "");
           }
         });
       }
@@ -75,9 +74,7 @@
   });
 
   http.createServer(app).listen(app.get('port'), function() {
-    console.log("fuck.");
-    console.log('Express server listening on port ' + app.get('port'));
-    return console.log(app.routes);
+    return console.log('Express server listening on port ' + app.get('port'));
   });
 
 }).call(this);

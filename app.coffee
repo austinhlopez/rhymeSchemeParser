@@ -78,15 +78,13 @@ app.post '/lyricLookup', (req, res) ->
           rawLyricsStripFront = rawLyricsString.replace("<!-- start of lyrics -->\n", "")
           rawLyricsStripBack = rawLyricsStripFront.replace("\n<!-- end of lyrics -->", "")
 
-          #TODO: Strip this goddamn html. I don't understand why this won't work...
-          rawLyricsNoHtml = rawLyricsStripBack.replace(/<[\s\S]*?>/, "")
+          rawLyricsNoHtml = rawLyricsStripBack.replace(/(<([^>]+)>)/ig, "")
 
-          console.log rawLyricsNoHtml
+          # Figure out putting things straight into the DB with the
+          # node.js mysql module.
         
 #app.get '/about', (req, res) ->
 #  res.sendfile('./app/views/about.html')
 
 http.createServer(app).listen app.get('port'), () ->
-  console.log "fuck."
   console.log('Express server listening on port ' + app.get('port'))
-  console.log(app.routes)
