@@ -9,7 +9,7 @@ angular.module('hackathonApp', [
   .config ['$routeProvider', ($routeProvider) ->
     $routeProvider
       .when '/',
-        templateUrl: 'views/main.html'
+        templateUrl: 'views/home.html'
         controller: 'homeCtrl'
       .otherwise
         redirectTo: '/'

@@ -1,14 +1,15 @@
 (function() {
   'use strict';
   angular.module('hackathonApp').factory('lyricLookup', [
-    "$http", "$document", function($http, $document) {
+    "$http", "$document", "$url", function($http, $document, $url) {
       return {
         getLyrics: function(artist, track) {
-          var q;
+          var path, q;
           q = artist.replace(" ", "+") + "+" + track.replace(" ", "+");
+          path = "/lyricLookup";
           return $http({
             method: 'POST',
-            url: "http://localhost:3000/lyricLookup",
+            url: $url(path),
             data: {
               q: q
             }

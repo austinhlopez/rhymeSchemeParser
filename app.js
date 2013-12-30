@@ -42,6 +42,10 @@
     app.use(express.static(path.join(__dirname, 'dist')));
   }
 
+  console.log(app.get('views'));
+
+  console.log(app.get('env'));
+
   app.get('/', function(req, res) {
     return res.sendfile('./app/index.html');
   });
@@ -66,7 +70,9 @@
             rawLyricsString = body.match(lyricsRegex)[0];
             rawLyricsStripFront = rawLyricsString.replace("<!-- start of lyrics -->\n", "");
             rawLyricsStripBack = rawLyricsStripFront.replace("\n<!-- end of lyrics -->", "");
-            return rawLyricsNoHtml = rawLyricsStripBack.replace(/(<([^>]+)>)/ig, "");
+            rawLyricsNoHtml = rawLyricsStripBack.replace(/(<([^>]+)>)/ig, "");
+            console.log(app.views);
+            return res.send(rawLyricsNoHtml);
           }
         });
       }

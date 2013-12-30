@@ -36,6 +36,9 @@ else
   app.set('views', __dirname + '/dist')
   app.use(express.static(path.join(__dirname, 'dist')))
 
+console.log(app.get('views'))
+console.log app.get('env')
+
 app.get '/', (req, res) ->
   res.sendfile('./app/index.html')
 
@@ -82,7 +85,10 @@ app.post '/lyricLookup', (req, res) ->
 
           # Figure out putting things straight into the DB with the
           # node.js mysql module.
-        
+          console.log app.views
+          res.send(rawLyricsNoHtml)
+          
+
 #app.get '/about', (req, res) ->
 #  res.sendfile('./app/views/about.html')
 
